@@ -1,0 +1,719 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>César Minerva | Senior QA Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg:       #060d1a;
+            --bg2:      #0d1b2e;
+            --card:     #0f2236;
+            --border:   rgba(56,189,248,0.12);
+            --accent:   #38bdf8;
+            --accent2:  #818cf8;
+            --green:    #34d399;
+            --text:     #e2e8f0;
+            --muted:    #64748b;
+            --white:    #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(6,13,26,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        nav {
+            max-width: 1100px; margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-weight: 800; font-size: 1.1rem; color: var(--accent); letter-spacing: -.5px; }
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 500; transition: color .2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-badge {
+            background: rgba(52,211,153,.15); color: var(--green);
+            border: 1px solid rgba(52,211,153,.35);
+            padding: .25rem .75rem; border-radius: 99px; font-size: .75rem; font-weight: 600;
+        }
+
+        /* ── HERO ── */
+        .hero-wrapper {
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 60%, rgba(56,189,248,.04) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero {
+            max-width: 1100px; margin: 0 auto;
+            padding: 5rem 2rem 4rem;
+            display: grid; grid-template-columns: auto 1fr; gap: 3.5rem; align-items: center;
+        }
+        .hero-photo-wrap { position: relative; flex-shrink: 0; }
+        .hero-photo {
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 0 8px rgba(56,189,248,.1), 0 24px 48px rgba(0,0,0,.5);
+            display: block;
+        }
+        .status-dot {
+            position: absolute; bottom: 10px; right: 10px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: var(--green); border: 3px solid var(--bg);
+            box-shadow: 0 0 8px var(--green);
+        }
+        .hero-info { }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: .5rem;
+            background: rgba(56,189,248,.08); color: var(--accent);
+            border: 1px solid rgba(56,189,248,.25);
+            padding: .3rem .9rem; border-radius: 99px;
+            font-size: .8rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+        .hero-name {
+            font-size: 3.2rem; font-weight: 900; color: var(--white);
+            line-height: 1.1; margin-bottom: .5rem; letter-spacing: -1.5px;
+        }
+        .hero-title {
+            font-size: 1.2rem; font-weight: 600;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: .75rem;
+        }
+        .hero-meta {
+            font-size: .9rem; color: var(--muted); margin-bottom: 1.5rem;
+            display: flex; flex-wrap: wrap; gap: .75rem;
+        }
+        .hero-meta span { display: flex; align-items: center; gap: .3rem; }
+        .hero-desc {
+            font-size: 1rem; color: var(--text); line-height: 1.8;
+            max-width: 600px; margin-bottom: 2rem;
+        }
+        .hero-desc strong { color: var(--accent); font-weight: 600; }
+        .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+        .btn {
+            padding: .7rem 1.6rem; border-radius: .5rem; font-weight: 600;
+            font-size: .9rem; text-decoration: none; transition: all .25s; cursor: pointer; border: none;
+        }
+        .btn-primary {
+            background: var(--accent); color: #000;
+        }
+        .btn-primary:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(56,189,248,.35); }
+        .btn-outline {
+            background: transparent; color: var(--accent);
+            border: 1.5px solid rgba(56,189,248,.4);
+        }
+        .btn-outline:hover { border-color: var(--accent); background: rgba(56,189,248,.07); transform: translateY(-2px); }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            border-top: 1px solid var(--border);
+        }
+        .stats-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            padding: 0 2rem;
+        }
+        .stat-item {
+            padding: 1.75rem 1.5rem; text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-num { font-size: 2rem; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: .3rem; }
+        .stat-lbl { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+
+        /* ── SECTIONS ── */
+        .section { max-width: 1100px; margin: 0 auto; padding: 4.5rem 2rem; }
+        .section-head { margin-bottom: 2.5rem; }
+        .section-label {
+            font-size: .75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--accent); margin-bottom: .5rem;
+        }
+        .section-title {
+            font-size: 2rem; font-weight: 800; color: var(--white); letter-spacing: -.5px;
+        }
+        .section-sep { width: 3rem; height: 3px; background: var(--accent); border-radius: 99px; margin-top: .75rem; }
+
+        /* ── EXPERIENCE ── */
+        .timeline { position: relative; padding-left: 1.5rem; border-left: 2px solid var(--border); }
+        .tl-item {
+            position: relative; margin-bottom: 2rem;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: .75rem; padding: 1.75rem 2rem;
+            transition: border-color .25s, transform .25s;
+        }
+        .tl-item:hover { border-color: var(--accent); transform: translateX(4px); }
+        .tl-dot {
+            position: absolute; left: -2.1rem; top: 1.75rem;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--accent); border: 3px solid var(--bg);
+        }
+        .tl-current .tl-dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
+        .tl-badge {
+            display: inline-block; background: rgba(52,211,153,.12); color: var(--green);
+            border: 1px solid rgba(52,211,153,.3);
+            font-size: .7rem; font-weight: 700; padding: .15rem .6rem; border-radius: 99px;
+            text-transform: uppercase; letter-spacing: .5px; margin-bottom: .75rem;
+        }
+        .tl-role { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: .2rem; }
+        .tl-company { font-size: .95rem; color: var(--accent); font-weight: 600; margin-bottom: .3rem; }
+        .tl-period { font-size: .82rem; color: var(--muted); margin-bottom: 1rem; }
+        .tl-desc { color: var(--text); line-height: 1.75; margin-bottom: 1.25rem; font-size: .95rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+        .tag {
+            background: rgba(56,189,248,.08); color: var(--accent);
+            border: 1px solid rgba(56,189,248,.2);
+            padding: .25rem .65rem; border-radius: .25rem; font-size: .78rem; font-weight: 500;
+        }
+
+        /* ── SKILLS ── */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.25rem; }
+        .skill-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: .75rem; padding: 1.5rem;
+            transition: border-color .25s, transform .25s;
+        }
+        .skill-card:hover { border-color: rgba(56,189,248,.4); transform: translateY(-4px); }
+        .skill-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+        .skill-card h3 { font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .75rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+        .skill-tag {
+            background: rgba(129,140,248,.08); color: #a5b4fc;
+            border: 1px solid rgba(129,140,248,.2);
+            padding: .2rem .6rem; border-radius: .25rem; font-size: .78rem;
+        }
+
+        /* ── PROJECTS ── */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .proj-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: .75rem; padding: 1.75rem;
+            display: flex; flex-direction: column;
+            transition: border-color .25s, transform .25s;
+            position: relative; overflow: hidden;
+        }
+        .proj-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(56,189,248,.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .proj-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,.4); }
+        .proj-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+        .proj-icon { font-size: 2rem; }
+        .proj-name { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: .2rem; }
+        .proj-sub { font-size: .82rem; color: var(--muted); }
+        .proj-desc { color: var(--text); font-size: .9rem; line-height: 1.7; margin-bottom: 1.25rem; flex: 1; }
+        .proj-metrics { display: grid; grid-template-columns: repeat(2,1fr); gap: .75rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+        .metric-val { font-size: 1.5rem; font-weight: 800; color: var(--green); line-height: 1; }
+        .metric-lbl { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+        .proj-link {
+            display: inline-flex; align-items: center; gap: .4rem;
+            color: var(--accent); font-size: .85rem; font-weight: 600;
+            text-decoration: none; transition: gap .2s;
+        }
+        .proj-link:hover { gap: .7rem; }
+
+        /* ── ACHIEVEMENTS ── */
+        .achiev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+        .achiev-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: .75rem; padding: 1.5rem;
+            transition: border-color .25s, transform .25s;
+        }
+        .achiev-card:hover { border-color: rgba(52,211,153,.4); transform: translateY(-4px); }
+        .achiev-icon { font-size: 2rem; margin-bottom: .75rem; }
+        .achiev-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; }
+        .achiev-card p { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+
+        /* ── ABOUT ── */
+        .about-grid { display: grid; grid-template-columns: 1fr 340px; gap: 3rem; align-items: start; }
+        .about-text p { margin-bottom: 1rem; color: var(--text); line-height: 1.8; font-size: .97rem; }
+        .about-text strong { color: var(--accent); font-weight: 600; }
+        .profile-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: .75rem; padding: 1.75rem;
+        }
+        .profile-card h3 { font-size: .875rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem; }
+        .profile-item { display: flex; justify-content: space-between; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--border); font-size: .88rem; }
+        .profile-item:last-child { border-bottom: none; }
+        .profile-item span:first-child { color: var(--muted); }
+        .profile-item span:last-child { color: var(--white); font-weight: 500; text-align: right; max-width: 60%; }
+
+        /* ── CONTACT ── */
+        .contact-wrap {
+            background: linear-gradient(135deg, var(--card) 0%, rgba(56,189,248,.06) 100%);
+            border: 1px solid var(--border); border-radius: 1rem;
+            padding: 3rem; text-align: center;
+        }
+        .contact-wrap h3 { font-size: 1.75rem; font-weight: 800; color: var(--white); margin-bottom: .75rem; }
+        .contact-wrap p { color: var(--muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+        .contact-link {
+            display: inline-flex; align-items: center; gap: .6rem;
+            background: rgba(255,255,255,.04); border: 1px solid var(--border);
+            color: var(--text); padding: .85rem 1.5rem; border-radius: .5rem;
+            text-decoration: none; font-weight: 600; font-size: .9rem;
+            transition: all .25s;
+        }
+        .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg2); border-top: 1px solid var(--border);
+            text-align: center; padding: 2rem;
+            color: var(--muted); font-size: .85rem;
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .hero-meta { justify-content: center; }
+            .hero-actions { justify-content: center; }
+            .stats-inner { grid-template-columns: repeat(2,1fr); }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+            .about-grid { grid-template-columns: 1fr; }
+            .hero-name { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+        .animate { opacity: 0; }
+        .animate.visible { animation: fadeUp .55s ease-out forwards; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <nav>
+        <div class="logo">César Minerva</div>
+        <ul class="nav-links">
+            <li><a href="#experience">Experiência</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#achievements">Conquistas</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+        <span class="nav-badge">● Disponível para oportunidades</span>
+    </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero-wrapper">
+    <div class="hero">
+        <div class="hero-photo-wrap">
+            <img src="assets/profile.jpg" alt="César Minerva" class="hero-photo" />
+            <div class="status-dot" title="Disponível para oportunidades"></div>
+        </div>
+        <div class="hero-info">
+            <div class="hero-tag">⚡ Senior QA Engineer</div>
+            <h1 class="hero-name">César Minerva</h1>
+            <p class="hero-title">Test Automation · Quality Engineering · TypeScript</p>
+            <div class="hero-meta">
+                <span>📍 Joinville, SC</span>
+                <span>🏢 Stefanini Group</span>
+                <span>🌐 100% Remoto</span>
+                <span>⏱️ 4+ anos em QA</span>
+            </div>
+            <p class="hero-desc">
+                Especialista em automação de testes com <strong>Playwright, Cypress e TypeScript</strong>.
+                Referência em Quality Engineering — liderando estratégias de automação, dashboards em
+                <strong>Power BI</strong> e implementação de <strong>IA em testes</strong>.
+                Apaixonado por qualidade, dados e desenvolvimento de pessoas.
+            </p>
+            <div class="hero-actions">
+                <a href="https://www.linkedin.com/in/cesarminerva/" target="_blank" class="btn btn-primary">🔗 LinkedIn</a>
+                <a href="#experience" class="btn btn-outline">Ver Experiência →</a>
+                <a href="mailto:cesar.minerva.silva@gmail.com" class="btn btn-outline">✉ Email</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item animate">
+            <div class="stat-num">4+</div>
+            <div class="stat-lbl">Anos de Experiência</div>
+        </div>
+        <div class="stat-item animate">
+            <div class="stat-num">27</div>
+            <div class="stat-lbl">Certificações Ativas</div>
+        </div>
+        <div class="stat-item animate">
+            <div class="stat-num">200+</div>
+            <div class="stat-lbl">Bugs Reportados</div>
+        </div>
+        <div class="stat-item animate">
+            <div class="stat-num">95%+</div>
+            <div class="stat-lbl">Taxa de Sucesso nos Testes</div>
+        </div>
+    </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+    <div class="section-head animate">
+        <div class="section-label">Trajetória</div>
+        <h2 class="section-title">Experiência Profissional</h2>
+        <div class="section-sep"></div>
+    </div>
+
+    <div class="timeline">
+
+        <div class="tl-item tl-current animate">
+            <div class="tl-dot"></div>
+            <span class="tl-badge">● Posição Atual</span>
+            <div class="tl-role">Analista de Qualidade Sênior</div>
+            <div class="tl-company">Stefanini Group · Projeto SEFA</div>
+            <div class="tl-period">Jan 2026 – Atual &nbsp;|&nbsp; Belém, PA (Remoto)</div>
+            <div class="tl-desc">
+                Referência de Quality Engineering responsável pela arquitetura e evolução da estratégia de qualidade em sistema fiscal crítico. Liderança técnica na automação E2E e de API, definição de padrões, estruturação de métricas estratégicas em Power BI e integração de IA para automação inteligente. Mentoria ativa do time e apresentação de dojos técnicos.
+            </div>
+            <div class="tags">
+                <span class="tag">Cypress 14</span>
+                <span class="tag">Playwright</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">APIs REST</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">GitHub Copilot</span>
+                <span class="tag">IA aplicada</span>
+            </div>
+        </div>
+
+        <div class="tl-item animate">
+            <div class="tl-dot"></div>
+            <div class="tl-role">Analista de Qualidade Pleno</div>
+            <div class="tl-company">Stefanini Group · Projeto SEFA</div>
+            <div class="tl-period">Nov 2024 – Dez 2025 &nbsp;|&nbsp; Recife, PE</div>
+            <div class="tl-desc">
+                Liderança da estratégia de qualidade em projeto de grande escala para o Estado. Implementação de pipelines CI/CD, automação E2E e de APIs, definição de métricas e gestão de defeitos. Articulação entre times de negócio e desenvolvimento para garantir entregas com qualidade.
+            </div>
+            <div class="tags">
+                <span class="tag">Cypress</span>
+                <span class="tag">Playwright</span>
+                <span class="tag">Selenium</span>
+                <span class="tag">Postman</span>
+                <span class="tag">Jira</span>
+                <span class="tag">Confluence</span>
+                <span class="tag">GitHub Actions</span>
+            </div>
+        </div>
+
+        <div class="tl-item animate">
+            <div class="tl-dot"></div>
+            <div class="tl-role">Analista de Qualidade Junior</div>
+            <div class="tl-company">Stefanini Group</div>
+            <div class="tl-period">Ago 2022 – Nov 2024 &nbsp;|&nbsp; Remoto</div>
+            <div class="tl-desc">
+                Testes funcionais, automatizados e E2E em projetos como FIRJAN e Banco Amazonas. Desenvolvimento de planos e casos de teste, automação com Selenium/JUnit, participação ativa em cerimônias Scrum e escrita de documentação técnica.
+            </div>
+            <div class="tags">
+                <span class="tag">Selenium</span>
+                <span class="tag">JUnit</span>
+                <span class="tag">Postman</span>
+                <span class="tag">Jira</span>
+                <span class="tag">Scrum</span>
+                <span class="tag">SQL</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SKILLS -->
+<div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section" id="skills">
+        <div class="section-head animate">
+            <div class="section-label">Competências</div>
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="section-sep"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card animate">
+                <div class="skill-icon">🧪</div>
+                <h3>Automação de Testes</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Playwright</span>
+                    <span class="skill-tag">Cypress</span>
+                    <span class="skill-tag">Selenium</span>
+                    <span class="skill-tag">E2E Testing</span>
+                    <span class="skill-tag">API Testing</span>
+                    <span class="skill-tag">Postman</span>
+                </div>
+            </div>
+            <div class="skill-card animate">
+                <div class="skill-icon">💻</div>
+                <h3>Linguagens & Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">JUnit</span>
+                </div>
+            </div>
+            <div class="skill-card animate">
+                <div class="skill-icon">🏗️</div>
+                <h3>Arquitetura & Padrões</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Page Object Model</span>
+                    <span class="skill-tag">Clean Code</span>
+                    <span class="skill-tag">BDD / Gherkin</span>
+                    <span class="skill-tag">TDD</span>
+                    <span class="skill-tag">SOLID</span>
+                    <span class="skill-tag">Data Factory</span>
+                </div>
+            </div>
+            <div class="skill-card animate">
+                <div class="skill-icon">📊</div>
+                <h3>DevOps & Métricas</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">Jenkins</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Confluence</span>
+                </div>
+            </div>
+            <div class="skill-card animate">
+                <div class="skill-icon">🔒</div>
+                <h3>Qualidade & Segurança</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">OWASP Top 10</span>
+                    <span class="skill-tag">SQL Injection</span>
+                    <span class="skill-tag">XSS Testing</span>
+                    <span class="skill-tag">Test Planning</span>
+                    <span class="skill-tag">Exploratory</span>
+                    <span class="skill-tag">Bug Triage</span>
+                </div>
+            </div>
+            <div class="skill-card animate">
+                <div class="skill-icon">🤖</div>
+                <h3>IA & Inovação</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">GitHub Copilot</span>
+                    <span class="skill-tag">IA para Automação</span>
+                    <span class="skill-tag">Data-Driven Tests</span>
+                    <span class="skill-tag">Dashboards</span>
+                    <span class="skill-tag">Observabilidade</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+    <div class="section-head animate">
+        <div class="section-label">Portfólio</div>
+        <h2 class="section-title">Projetos & Automações</h2>
+        <div class="section-sep"></div>
+    </div>
+    <div class="projects-grid">
+
+        <div class="proj-card animate">
+            <div class="proj-header">
+                <div class="proj-icon">⚙️</div>
+                <div>
+                    <div class="proj-name">SEFA – Automação Fiscal</div>
+                    <div class="proj-sub">E2E + API · Cypress 14 · CI/CD</div>
+                </div>
+            </div>
+            <p class="proj-desc">Suite de automação para sistema fiscal crítico do Estado. Combina testes E2E de interface e API em pipeline único, com geração automática de evidências, dashboard de métricas e relatórios HTML.</p>
+            <div class="proj-metrics">
+                <div><div class="metric-val">26</div><div class="metric-lbl">Specs automatizadas</div></div>
+                <div><div class="metric-val">8</div><div class="metric-lbl">Módulos cobertos</div></div>
+                <div><div class="metric-val">95%+</div><div class="metric-lbl">Taxa de sucesso</div></div>
+                <div><div class="metric-val">100%</div><div class="metric-lbl">Fluxos críticos</div></div>
+            </div>
+            <div class="tags" style="margin-bottom:1.25rem">
+                <span class="tag">Cypress 14</span><span class="tag">JavaScript</span><span class="tag">Page Objects</span><span class="tag">Mochawesome</span><span class="tag">Power BI</span><span class="tag">GitHub Actions</span>
+            </div>
+            <a href="https://github.com/scsilva8/automacaosefa" target="_blank" class="proj-link">Ver no GitHub →</a>
+        </div>
+
+        <div class="proj-card animate">
+            <div class="proj-header">
+                <div class="proj-icon">🏦</div>
+                <div>
+                    <div class="proj-name">ParaBank QA Suite</div>
+                    <div class="proj-sub">E2E · Playwright · TypeScript</div>
+                </div>
+            </div>
+            <p class="proj-desc">Suite completa para plataforma bancária demo. Cobertura de login, transferências, segurança e acessibilidade. Testes organizados com Page Object Model e Data Factory Pattern.</p>
+            <div class="proj-metrics">
+                <div><div class="metric-val">50+</div><div class="metric-lbl">Casos de teste</div></div>
+                <div><div class="metric-val">12</div><div class="metric-lbl">Categorias</div></div>
+                <div><div class="metric-val">90%+</div><div class="metric-lbl">Taxa de sucesso</div></div>
+                <div><div class="metric-val">2.5k</div><div class="metric-lbl">Linhas TypeScript</div></div>
+            </div>
+            <div class="tags" style="margin-bottom:1.25rem">
+                <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">POM</span><span class="tag">Data Factory</span><span class="tag">HTML Reports</span>
+            </div>
+            <a href="https://github.com/scsilva8" target="_blank" class="proj-link">Ver no GitHub →</a>
+        </div>
+
+        <div class="proj-card animate">
+            <div class="proj-header">
+                <div class="proj-icon">📊</div>
+                <div>
+                    <div class="proj-name">Quality Dashboard</div>
+                    <div class="proj-sub">Métricas · Power BI · Data-Driven</div>
+                </div>
+            </div>
+            <p class="proj-desc">Estruturação de dashboards estratégicos de qualidade em Power BI para tomada de decisão baseada em dados. Métricas de cobertura, flakiness, tempo de execução e ROI de automação.</p>
+            <div class="proj-metrics">
+                <div><div class="metric-val">KPIs</div><div class="metric-lbl">Estratégicos</div></div>
+                <div><div class="metric-val">100%</div><div class="metric-lbl">Data-Driven</div></div>
+                <div><div class="metric-val">Real</div><div class="metric-lbl">Time updates</div></div>
+                <div><div class="metric-val">ROI</div><div class="metric-lbl">Mensurável</div></div>
+            </div>
+            <div class="tags" style="margin-bottom:1.25rem">
+                <span class="tag">Power BI</span><span class="tag">Métricas QA</span><span class="tag">Observabilidade</span><span class="tag">KPIs</span>
+            </div>
+            <a href="https://www.linkedin.com/in/cesarminerva/" target="_blank" class="proj-link">Ver no LinkedIn →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section" id="achievements">
+        <div class="section-head animate">
+            <div class="section-label">Reconhecimentos</div>
+            <h2 class="section-title">Conquistas & Destaques</h2>
+            <div class="section-sep"></div>
+        </div>
+        <div class="achiev-grid">
+            <div class="achiev-card animate">
+                <div class="achiev-icon">🎓</div>
+                <h3>Pós-graduação em Eng. de Software</h3>
+                <p>Especialização com 600h em arquitetura, qualidade e governança de TI — Concluída em 2026.</p>
+            </div>
+            <div class="achiev-card animate">
+                <div class="achiev-icon">⭐</div>
+                <h3>Promoção a QA Sênior</h3>
+                <p>Reconhecimento na Stefanini pela liderança técnica, entrega de resultados e mentoria do time.</p>
+            </div>
+            <div class="achiev-card animate">
+                <div class="achiev-icon">📜</div>
+                <h3>27 Certificações Ativas</h3>
+                <p>IA para Produtividade, Quality Engineering, Agile, Automação de Testes e muito mais.</p>
+            </div>
+            <div class="achiev-card animate">
+                <div class="achiev-icon">🎤</div>
+                <h3>Palestras & Dojos Técnicos</h3>
+                <p>"Aprimorando Testes com IA" e "Monitoramento com Power BI" — avaliações 100% positivas.</p>
+            </div>
+            <div class="achiev-card animate">
+                <div class="achiev-icon">👥</div>
+                <h3>Mentoria & Liderança</h3>
+                <p>Mentoria ativa de profissionais em QA, disseminação de boas práticas e cultura de qualidade.</p>
+            </div>
+            <div class="achiev-card animate">
+                <div class="achiev-icon">🌐</div>
+                <h3>Presença Ativa na Comunidade QA</h3>
+                <p>Compartilhamento de conteúdo técnico, participação em eventos e networking na área de qualidade de software.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+    <div class="section-head animate">
+        <div class="section-label">Quem sou</div>
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="section-sep"></div>
+    </div>
+    <div class="about-grid">
+        <div class="about-text animate">
+            <p>Sou um <strong>Senior QA Engineer</strong> com mais de 4 anos de experiência contínua em automação de testes. Minha trajetória reflete uma progressão consistente — de Jr a Sênior na mesma empresa — construída com dedicação, aprendizado e entrega de resultados.</p>
+            <p>Acredito que <strong>qualidade vai além de encontrar defeitos</strong>: é sobre construir confiança, reduzir riscos e acelerar entregas com previsibilidade. Meu diferencial está em combinar <strong>expertise técnica profunda</strong> com <strong>pensamento estratégico orientado a dados</strong>.</p>
+            <p>Atuo como referência técnica no time — liderando a arquitetura de automação, estruturando métricas estratégicas em <strong>Power BI</strong> e explorando <strong>IA como ferramenta de inovação em QA</strong>. Sou apaixonado por compartilhar conhecimento e desenvolver pessoas.</p>
+        </div>
+        <div class="profile-card animate">
+            <h3>Perfil Profissional</h3>
+            <div class="profile-item"><span>Empresa</span><span>Stefanini Group</span></div>
+            <div class="profile-item"><span>Posição</span><span>Senior QA Engineer</span></div>
+            <div class="profile-item"><span>Localização</span><span>Joinville, SC</span></div>
+            <div class="profile-item"><span>Modelo</span><span>100% Remoto</span></div>
+            <div class="profile-item"><span>Experiência</span><span>4+ anos em QA</span></div>
+            <div class="profile-item"><span>Formação</span><span>Pós-grad. Eng. Software</span></div>
+            <div class="profile-item"><span>Certificações</span><span>27 Ativas</span></div>
+            <div class="profile-item"><span>Disponibilidade</span><span style="color:var(--green)">✓ Disponível</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div style="background: var(--bg2); border-top: 1px solid var(--border);">
+    <div class="section" id="contact">
+        <div class="contact-wrap animate">
+            <h3>Vamos Conversar?</h3>
+            <p>Aberto a novas oportunidades, parcerias técnicas e trocas sobre QA, automação e qualidade de software.</p>
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/cesarminerva/" target="_blank" class="contact-link">🔗 LinkedIn</a>
+                <a href="https://github.com/scsilva8" target="_blank" class="contact-link">💻 GitHub</a>
+                <a href="mailto:cesar.minerva.silva@gmail.com" class="contact-link">✉ cesar.minerva.silva@gmail.com</a>
+                <a href="https://wa.me/5547999150055" target="_blank" class="contact-link">📱 WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 César Minerva · Senior QA Engineer &nbsp;|&nbsp; <a href="https://github.com/scsilva8/Portif-lio" target="_blank">GitHub</a></p>
+</footer>
+
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
